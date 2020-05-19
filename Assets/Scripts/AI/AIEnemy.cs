@@ -27,6 +27,9 @@ public class AIEnemy : MonoBehaviour {
 	void Start () {
 		_myRender = GetComponent<Renderer>();
 		_theRigidbody = GetComponent<Rigidbody>();
+
+
+
 	}
 	
 	

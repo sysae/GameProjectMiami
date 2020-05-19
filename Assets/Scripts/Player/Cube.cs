@@ -84,10 +84,10 @@ public class Cube : MonoBehaviour
         }
 
         //типа автомат
-        //if (Input.GetMouseButton(1))
-        //{
-        //    Shoot();
-        //}
+        if (Input.GetMouseButton(1))
+        {
+            Shoot();
+        }
     }
 
 

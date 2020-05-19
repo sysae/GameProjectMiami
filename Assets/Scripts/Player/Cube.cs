@@ -48,6 +48,7 @@ public class Cube : MonoBehaviour
         //BulletsParentPosition = BulletsParent.transform.position;
         Bullet.transform.position = BulletsParent.transform.position;
         Bullet.transform.rotation = cube.transform.rotation;
+        print("SHOOOOOOOOOOOOOOOOOOOOOT");
         Instantiate(Bullet);
     }
 

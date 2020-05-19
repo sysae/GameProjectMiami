@@ -16,6 +16,8 @@ public class Cube : MonoBehaviour
     public GameObject Bullet;
     private GameObject Object;
 
+    private AudioSource ShootSound;
+
 
     private bool isEquip = false;
 
@@ -97,6 +99,7 @@ public class Cube : MonoBehaviour
         if (collision.gameObject.tag == "Equipment")
         {
             Object = collision.gameObject;
+           // ShootSound = Object.Audio
             Object.transform.parent = cube.transform;
             Object.gameObject.transform.localPosition = new Vector3(0.028f, -0.11f, 0.766f);
             Object.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);

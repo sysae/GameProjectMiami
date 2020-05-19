@@ -16,7 +16,13 @@ public class Cube : MonoBehaviour
     public GameObject Bullet;
     private GameObject Object;
 
-    private AudioSource ShootSound;
+    //[SerializeField] private AudioClip ShootSound;
+
+    private AudioSource AudioSource;
+    private AudioClip ShootSound;
+    public AudioSource StartMusic;
+    public AudioClip PickUpWeaponSound;
+    public AudioClip DropWeaponSound;
 
 
     private bool isEquip = false;
@@ -49,25 +55,33 @@ public class Cube : MonoBehaviour
     {
         //BulletsParentPosition = BulletsParent.transform.position;
         Bullet.transform.position = BulletsParent.transform.position;
-        Bullet.transform.rotation = cube.transform.rotation;
-        print("SHOOOOOOOOOOOOOOOOOOOOOT");
+        Bullet.transform.rotation = cube.transform.rotation;  
         Instantiate(Bullet);
+        AudioSource.PlayOneShot(ShootSound);
     }
 
     void DropWeapon()
     {
-        Object.transform.parent = null;
-        Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        Object.GetComponent<Rigidbody>().AddForce(transform.forward * 200);
-        isEquip = false;
+        if (isEquip == true)
+        {
+            Object.transform.parent = null;
+            Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
+            Object.GetComponent<Rigidbody>().AddForce(transform.forward * 600);
+            AudioSource.PlayOneShot(DropWeaponSound);
+            isEquip = false;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        StartMusic = GetComponent<AudioSource>();
+        StartMusic.Play();
         controller = GetComponent<CharacterController>();
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -87,23 +101,25 @@ public class Cube : MonoBehaviour
         }
 
         //типа автомат
-        if (Input.GetMouseButton(1))
-        {
-            Shoot();
-        }
+        //if (Input.GetMouseButton(1))
+        //{
+        //    Shoot();
+        //}
     }
 
 
     void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        if (collision.gameObject.tag == "Equipment")
+        if (collision.gameObject.tag == "Equipment" & isEquip == false)
         {
             Object = collision.gameObject;
-           // ShootSound = Object.Audio
+            AudioSource = Object.GetComponent<AudioSource>();
+            ShootSound = AudioSource.clip;
             Object.transform.parent = cube.transform;
             Object.gameObject.transform.localPosition = new Vector3(0.028f, -0.11f, 0.766f);
             Object.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
             Object.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            AudioSource.PlayOneShot(PickUpWeaponSound);
             isEquip = true;
         }
     }

@@ -65,9 +65,10 @@ public class Cube : MonoBehaviour
         if (isEquip == true)
         {
             Object.transform.parent = null;
+            
+          
             Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
-            Object.GetComponent<Rigidbody>().AddForce(transform.forward * 600);
+            Object.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
             AudioSource.PlayOneShot(DropWeaponSound);
             isEquip = false;
         }
@@ -110,12 +111,13 @@ public class Cube : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        if (collision.gameObject.tag == "Equipment" & isEquip == false)
+        if (collision.gameObject.tag == "Equipment" & Input.GetKey(KeyCode.E) & isEquip == false)
         {
             Object = collision.gameObject;
             AudioSource = Object.GetComponent<AudioSource>();
             ShootSound = AudioSource.clip;
             Object.transform.parent = cube.transform;
+            //исправить хуйню
             Object.gameObject.transform.localPosition = new Vector3(0.028f, -0.11f, 0.766f);
             Object.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
             Object.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

@@ -9,9 +9,9 @@ public class Cube : MonoBehaviour
 {
     Vector3 direction;
     CharacterController controller;
-    public float speed = 15f;
-    public float gravity = 20f;
 
+    private float speed = 20f;
+    private float gravity = 20f;
 
     //пушки
     private float RateOfFire = 0.5f;
@@ -20,7 +20,7 @@ public class Cube : MonoBehaviour
 
     //объекты
     public GameObject cube;
-    public GameObject BulletsParent;
+    private GameObject BulletsParent;
     public GameObject Bullet;
     private GameObject Object;
 
@@ -30,9 +30,6 @@ public class Cube : MonoBehaviour
     public AudioSource StartMusic;
     public AudioClip PickUpWeaponSound;
     public AudioClip DropWeaponSound;
-
-
-   
 
     void CubeController()
     {
@@ -74,7 +71,7 @@ public class Cube : MonoBehaviour
             }
             else
             {
-                RateOfFire = 0.1f;
+                RateOfFire = 0.10f;
             }
         }          
     }
@@ -94,17 +91,16 @@ public class Cube : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         StartMusic = GetComponent<AudioSource>();
-        StartMusic.Play();
+        //StartMusic.Play();
         controller = GetComponent<CharacterController>();
     }
 
-    
     // Update is called once per frame
     void Update()
     {
-        //просчитываем скорострельнот
+        //просчитываем скорострельность
         if(RateOfFire > 0)
         {
             RateOfFire -= Time.deltaTime;
@@ -154,6 +150,7 @@ public class Cube : MonoBehaviour
             {
                 IsAutomatic = weapon.IsAutomatic;
             }
+            BulletsParent = Object.transform.GetChild(0).gameObject; 
             //isAutomatic = Convert.ToBoolean(Object.transform.GetChild(0).transform.GetChild(0).name);
             AudioSource = Object.GetComponent<AudioSource>();
             ShootSound = AudioSource.clip;

@@ -13,6 +13,7 @@ public class Cube : MonoBehaviour
     private float speed = 20f;
     private float gravity = 20f;
 
+    [SerializeField]private Equipment equipment;
     private Weapon currentWeapon;
     public float fromLastShot;
 
@@ -23,6 +24,7 @@ public class Cube : MonoBehaviour
 
     public AudioClip PickUpWeaponSound;
     public AudioClip DropWeaponSound;
+    [SerializeField] Transform hands;
 
     void CubeController()
     {
@@ -54,6 +56,7 @@ public class Cube : MonoBehaviour
     {
         currentWeapon.ResetPosition();
         currentWeapon = null;
+        equipment.SetIsArmed(false);
         PlayDropWeaponSound();
     }
 
@@ -101,6 +104,7 @@ public class Cube : MonoBehaviour
             if (Input.GetKey(KeyCode.G))
                 DropWeapon();
         }
+        
         fromLastShot += Time.deltaTime;
         CubeController();
 
@@ -128,15 +132,13 @@ public class Cube : MonoBehaviour
             }
         }
     }
+
     void EquipWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
+        equipment.SetIsArmed(true);
 
-        //TODO: исправить хуйню
-        weapon.transform.parent = transform;
-        weapon.transform.localPosition = new Vector3(0.028f, 5.11f, 0.766f);
-        weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        currentWeapon.SetArmedPosition(hands);
         AudioSource.PlayOneShot(PickUpWeaponSound);
     }
 

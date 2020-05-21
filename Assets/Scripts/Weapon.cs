@@ -28,6 +28,14 @@ public class Weapon : MonoBehaviour
     }
 
 
+    public void SetArmedPosition(Transform hands)
+    {
+        transform.parent = hands;
+        transform.localPosition = Vector3.zero;
+        //weapon.transform.localPosition = new Vector3(0.028f, 5.11f, 0.766f);
+        transform.localRotation = Quaternion.identity;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
     public void ResetPosition()
     {
         transform.parent = null;

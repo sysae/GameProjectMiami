@@ -2,6 +2,7 @@
 using UnityEngine.SocialPlatforms;
 using System.Collections;
 using JetBrains.Annotations;
+using UnityEngine.AI;
 
 public class AIEnemy : MonoBehaviour {
 
@@ -11,60 +12,70 @@ public class AIEnemy : MonoBehaviour {
 	public float attackDistance;
 	public float enemyMovementSpeed;
 	public float damping;
-
-	[Header("Пули бота")]
-	[SerializeField] private GameObject bulletPrefabs;
-
-
-	[Header("Объект игрока")]
-	[SerializeField] private Transform _playerTarget;
-
-	
-
-	Rigidbody _theRigidbody;
+	private NavMeshAgent myAgent;
 	Renderer _myRender;
 
+	public GameObject prefabBullet;
+	private float timeBtwShots;
+	public float startTimeBtwShots;
 
+	[SerializeField] private Transform _playerTarget;
 
-	// Use this for initialization
 	void Start () {
-		
+		myAgent = GetComponent<NavMeshAgent>();
 		_myRender = GetComponent<Renderer>();
-		_theRigidbody = GetComponent<Rigidbody>();
+
+		timeBtwShots = startTimeBtwShots;
 	}
-	
 	
 	void FixedUpdate () {
 
+		myAgent.destination = _playerTarget.position;
 		playerTargetDistance = Vector3.Distance(_playerTarget.position, transform.position);
-		if (playerTargetDistance < enemyLookDistance)
+		if (playerTargetDistance > 40f)
 		{
-			lookAtPlayer();
+			myAgent.Stop();
 		}
-		if (playerTargetDistance < attackDistance)
-		{
-			_myRender.material.color = Color.red;
-			attackPlease();
-			
-		}
-		// оставновился и спокоен
 		else
 		{
-			_myRender.material.color = Color.blue;
+			if (playerTargetDistance < 20f)
+			{
+				
+				myAgent.Stop();
+			}
+			else
+			{
+				AttackBot();
+				myAgent.Resume();
+			}
 		}
 	}
+	/*private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Enemy"))
+		{
+			StartCoroutine(Die());
+		}
+	}
+
+	private IEnumerator Die()
+	{
+		transform.Rotate(-75, 0, 0);
+
+		yield return new WaitForSeconds(1.5f);
+		Destroy(gameObject);
+	}*/
 	
-	// враг увидел
-	void lookAtPlayer(){
-		Quaternion rotation = Quaternion.LookRotation(_playerTarget.position - transform.position);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime*damping);
+	private void AttackBot()
+	{
+		if (timeBtwShots <= 0)
+		{
+			Instantiate(prefabBullet, transform.position, Quaternion.identity);
+			timeBtwShots = startTimeBtwShots;
+		}
+		else
+		{
+			timeBtwShots -= Time.deltaTime;
+		}
 	}
-
-	// враг атакует
-	void attackPlease(){
-		_theRigidbody.AddForce(transform.forward * enemyMovementSpeed);
-		//GetComponent<Rigidbody>().AddForce(transform.forward * 3500);
-
-	}
-
 }

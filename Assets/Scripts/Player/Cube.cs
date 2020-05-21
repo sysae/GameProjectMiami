@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor;
@@ -11,13 +12,19 @@ public class Cube : MonoBehaviour
     public float speed = 15f;
     public float gravity = 20f;
 
+
+    //пушки
+    private float RateOfFire = 0.5f;
+    private bool isEquip = false;
+    private bool IsAutomatic = false;
+
+    //объекты
     public GameObject cube;
     public GameObject BulletsParent;
     public GameObject Bullet;
     private GameObject Object;
 
-    //[SerializeField] private AudioClip ShootSound;
-
+    //звуки
     private AudioSource AudioSource;
     private AudioClip ShootSound;
     public AudioSource StartMusic;
@@ -25,7 +32,7 @@ public class Cube : MonoBehaviour
     public AudioClip DropWeaponSound;
 
 
-    private bool isEquip = false;
+   
 
     void CubeController()
     {
@@ -51,22 +58,33 @@ public class Cube : MonoBehaviour
         }
     }
 
+    //стрельба
     void Shoot()
-    {
-        //BulletsParentPosition = BulletsParent.transform.position;
-        Bullet.transform.position = BulletsParent.transform.position;
-        Bullet.transform.rotation = cube.transform.rotation;  
-        Instantiate(Bullet);
-        AudioSource.PlayOneShot(ShootSound);
+    {       
+        if (RateOfFire < 0 & isEquip)
+        {
+            //BulletsParentPosition = BulletsParent.transform.position;
+            Bullet.transform.position = BulletsParent.transform.position;
+            Bullet.transform.rotation = cube.transform.rotation;
+            Instantiate(Bullet);
+            AudioSource.PlayOneShot(ShootSound);
+            if (IsAutomatic)
+            {
+                RateOfFire = 0.15f;
+            }
+            else
+            {
+                RateOfFire = 0.1f;
+            }
+        }          
     }
 
+    //выбросить пушку
     void DropWeapon()
     {
-        if (isEquip == true)
+        if (isEquip)
         {
-            Object.transform.parent = null;
-            
-          
+            Object.transform.parent = null;        
             Object.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             Object.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
             AudioSource.PlayOneShot(DropWeaponSound);
@@ -86,34 +104,57 @@ public class Cube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CubeController();
-        //типа пистолет
-        if (Input.GetMouseButtonDown(0))
+        //просчитываем скорострельнот
+        if(RateOfFire > 0)
         {
-            if (isEquip)
+            RateOfFire -= Time.deltaTime;
+            var seconds = RateOfFire % 60;
+        }
+       
+        CubeController();
+
+        if (isEquip)
+        {
+            if (!IsAutomatic)
             {
-                Shoot();
+                //типа пистолет
+                if (Input.GetMouseButtonDown(0))
+                {
+                    {
+                        Shoot();
+                    }
+                }
+            }
+            else
+            {
+                //типа автомат
+                if (Input.GetMouseButton(0))
+                {
+                    Shoot();
+                }
             }
         }
-
-        if(Input.GetKey(KeyCode.G) & isEquip)
+          
+        //выбрасывание пушки
+        if (Input.GetKey(KeyCode.G) & isEquip)
         {
             DropWeapon();
         }
-
-        //типа автомат
-        //if (Input.GetMouseButton(1))
-        //{
-        //    Shoot();
-        //}
     }
 
 
     void OnControllerColliderHit(ControllerColliderHit collision)
-    {
-        if (collision.gameObject.tag == "Equipment" & Input.GetKey(KeyCode.E) & isEquip == false)
+    {   
+        //поднятие пушки
+        if (collision.gameObject.tag == "Equipment" & Input.GetKey(KeyCode.E) & !isEquip)
         {
             Object = collision.gameObject;
+            var weapon = Object.GetComponent<Weapon>();
+            if(weapon != null)
+            {
+                IsAutomatic = weapon.IsAutomatic;
+            }
+            //isAutomatic = Convert.ToBoolean(Object.transform.GetChild(0).transform.GetChild(0).name);
             AudioSource = Object.GetComponent<AudioSource>();
             ShootSound = AudioSource.clip;
             Object.transform.parent = cube.transform;

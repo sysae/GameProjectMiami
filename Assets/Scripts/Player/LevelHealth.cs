@@ -14,16 +14,19 @@ public class LevelHealth : MonoBehaviour
         
         if (flag)
         {
+            
             //text.GetComponent<Text>().text = "Уровень здоровья" + levelHealth + "%";
             if(levelHealth >= 100)
             {
+                Debug.Log(levelHealth);
                 levelHealth = 100;
             }
             if(levelHealth <= 0)
             {
+                Debug.Log(levelHealth);
                 // text.GetComponent<Text>().text = "Вы умерли";
-                //Destroy(gameObject);
-                
+                Destroy(gameObject);
+
                 flag = false;
             }
         }

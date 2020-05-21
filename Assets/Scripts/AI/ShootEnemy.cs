@@ -28,7 +28,7 @@ public class ShootEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
             DestroyObject();
             player.GetComponent<LevelHealth>().levelHealth -= Health;

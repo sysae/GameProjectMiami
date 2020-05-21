@@ -5,16 +5,10 @@ using UnityEngine;
 public class playerAnim : MonoBehaviour
 {
     public Animator anim;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMotion(float x, float y)
     {
-        anim.SetFloat("vertical", Input.GetAxis("Vertical"));
-        anim.SetFloat("horizontal", Input.GetAxis("Horizontal"));
+        anim.SetFloat("vertical", x);
+        anim.SetFloat("horizontal", y);
     }
 }

@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LowerTorso
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Body
+    m_Weight: 1
+  - m_Path: Body/L_Noga
+    m_Weight: 1
+  - m_Path: Body/L_Noga/L_koleno
+    m_Weight: 1
+  - m_Path: Body/L_Noga/L_koleno/L_stupna
+    m_Weight: 1
+  - m_Path: Body/L_Noga/L_koleno/L_stupna/L_noga1
+    m_Weight: 1
+  - m_Path: Body/L_Noga/L_koleno/L_stupna/L_noga1/L_noga2
+    m_Weight: 1
+  - m_Path: Body/R_NOga
+    m_Weight: 1
+  - m_Path: Body/R_NOga/R_koleno
+    m_Weight: 1
+  - m_Path: Body/R_NOga/R_koleno/R_stupna
+    m_Weight: 1
+  - m_Path: Body/R_NOga/R_koleno/R_stupna/R_noga1
+    m_Weight: 1
+  - m_Path: Body/R_NOga/R_koleno/R_stupna/R_noga1/R_noga2
+    m_Weight: 1
+  - m_Path: Body/Spine
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy1
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy1/L_toy2
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy1/L_toy2/L_toy3
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy1/L_toy2/L_toy3/L_toy4
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy5
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy5/L_toy6
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy5/L_toy6/L_toy7
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy5/L_toy6/L_toy7/L_toy8
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy9
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy9/L_toy10
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy9/L_toy10/L_toy11
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy9/L_toy10/L_toy11/L_toy12
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy13
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy13/L_toy14
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy13/L_toy14/L_toy15
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy13/L_toy14/L_toy15/L_toy16
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/L_Shoulder/L_Heand/L_Lokot/L_kist/L_toy13/L_toy14/L_toy15/L_toy16/L_toy17
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/Neck
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/Neck/Head
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/Neck/Head/End_Head
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy1
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy1/R_Toy2
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy1/R_Toy2/R_Toy3
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy1/R_Toy2/R_Toy3/R_Toy4
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy5
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy5/R_Toy6
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy5/R_Toy6/R_Toy7
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy5/R_Toy6/R_Toy7/R_Toy8
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy9
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy9/R_Toy10
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy9/R_Toy10/R_Toy11
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy9/R_Toy10/R_Toy11/R_Toy12
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy13
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy13/R_Toy14
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy13/R_Toy14/R_Toy15
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy13/R_Toy14/R_Toy15/R_Toy16
+    m_Weight: 1
+  - m_Path: Body/Spine/Spine1/Spine2/R_Shoulder/R_heand/R_Lokot/R_Kist/R_Toy13/R_Toy14/R_Toy15/R_Toy16/R_Toy17
+    m_Weight: 1
+  - m_Path: CharacterFullAlienHorrorStyle:Alien_HorrorStyle
+    m_Weight: 1
+  - m_Path: Main
+    m_Weight: 1
+  - m_Path: Main/Body 1
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8/nurbsCircle9
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8/nurbsCircle9/nurbsCircle10
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8/nurbsCircle9/nurbsCircle10/nurbsCircle15
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8/nurbsCircle9/nurbsCircle10/nurbsCircle18
+    m_Weight: 1
+  - m_Path: Main/Body 1/nurbsCircle8/nurbsCircle9/nurbsCircle10/nurbsCircle18/nurbsCircle17
+    m_Weight: 1
+  - m_Path: Main/L_hand
+    m_Weight: 1
+  - m_Path: Main/R_hand
+    m_Weight: 1

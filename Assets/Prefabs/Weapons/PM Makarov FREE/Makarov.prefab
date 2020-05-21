@@ -114,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025505032, y: 0.11575976, z: 0.14443319}
-  m_Center: {x: -0.0011281287, y: 0.058705017, z: 0.03477045}
+  m_Size: {x: 0.015482212, y: 0.11575976, z: 0.14443319}
+  m_Center: {x: -0.006139541, y: 0.058705017, z: 0.034770448}
 --- !u!82 &4093665485243784521
 AudioSource:
   m_ObjectHideFlags: 0
@@ -224,7 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b6e3046314c144999c87da2d89edb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutomatic: 0
+  isAutomatic: 1
+  rateOfFire: 1
+  shootSound: {fileID: 4093665485243784521}
+  bulletsParent: {fileID: 3483197638524476130}
 --- !u!1 &1687884250196152
 GameObject:
   m_ObjectHideFlags: 0

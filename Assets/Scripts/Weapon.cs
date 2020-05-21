@@ -5,6 +5,33 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private bool isAutomatic;
-    public bool IsAutomatic => isAutomatic;
+    [SerializeField] private float rateOfFire = 0.5f;
+    [SerializeField] private AudioSource shootSound;
+    [SerializeField] private Transform bulletsParent;
 
+    private Rigidbody rb;
+
+    public bool IsAutomatic => isAutomatic;
+    public float ShootDelay => rateOfFire;
+    public Transform BulletsParent => bulletsParent;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void PlayShootSound()
+    {
+        shootSound.PlayOneShot(shootSound.clip);
+        //shootSound.Play();
+        //AudioSource.PlayOneShot(shootSound.clip);
+    }
+
+
+    public void ResetPosition()
+    {
+        transform.parent = null;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(transform.forward * 500);
+    }
 }

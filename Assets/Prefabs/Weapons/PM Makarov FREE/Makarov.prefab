@@ -224,8 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b6e3046314c144999c87da2d89edb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutomatic: 1
-  rateOfFire: 1
+  isAutomatic: 0
+  rateOfFire: 0.15
   shootSound: {fileID: 4093665485243784521}
   bulletsParent: {fileID: 3483197638524476130}
 --- !u!1 &1687884250196152

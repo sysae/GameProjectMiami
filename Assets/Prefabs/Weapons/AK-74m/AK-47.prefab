@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAutomatic: 1
-  rateOfFire: 0.26
+  rateOfFire: 0.15
   shootSound: {fileID: 4050096276157453810}
   bulletsParent: {fileID: 8125962297832765376}
 --- !u!1 &8844149984120186858

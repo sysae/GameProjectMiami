@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2136609139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2136609140}
+  m_Layer: 0
+  m_Name: HandsPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2136609140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136609139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.577, z: 0.518}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5746279810468377265}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109351653604422327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,6 +2227,7 @@ GameObject:
   - component: {fileID: 775841536807983532}
   - component: {fileID: 775841536807983521}
   - component: {fileID: 8296172668864402604}
+  - component: {fileID: 8296172668864402605}
   m_Layer: 0
   m_Name: HeroNew
   m_TagString: Untagged
@@ -2218,6 +2249,7 @@ Transform:
   - {fileID: 5159294068060894226}
   - {fileID: 1483774459621687684}
   - {fileID: 2569557281965320441}
+  - {fileID: 2136609140}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2238,7 +2270,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &775841536807983533
 Animator:
   serializedVersion: 3
@@ -2270,12 +2302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efdf941098125141adc69b18a0fa8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipment: {fileID: 8296172668864402605}
   fromLastShot: 0
   BulletPrefab: {fileID: 2015737824790035588, guid: 2a06c2384fa8f9646ad5f1d0030133ca,
     type: 3}
   AudioSource: {fileID: 8296172668864402604}
   PickUpWeaponSound: {fileID: 8300000, guid: 7c659fea289c5f94f94b58a4dda1cdf6, type: 3}
   DropWeaponSound: {fileID: 8300000, guid: 5079105ddb6cee44a958ed5fa16e8127, type: 3}
+  hands: {fileID: 2136609140}
 --- !u!114 &775841536807983521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,6 +2419,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8296172668864402605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783632059586412706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcb06bb140a336429cb38f2b54f553d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 775841536807983533}
 --- !u!1 &8818321082446121235
 GameObject:
   m_ObjectHideFlags: 0

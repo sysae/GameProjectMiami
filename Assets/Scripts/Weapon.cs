@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+
     public void PlayShootSound()
     {
         shootSound.PlayOneShot(shootSound.clip);

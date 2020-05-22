@@ -115,9 +115,13 @@ public class Cube : MonoBehaviour
     //стрельба
     private void Shoot()
     {
+        //var p = transform.position;
+        //p.y = 0.06f;
+        //transform.position = p;
         var pos = currentWeapon.BulletsParent.transform.position;
         var rot = transform.rotation;
         var bullet = Instantiate(BulletPrefab, pos, rot);
+        bullet.transform.position = pos;
         currentWeapon.PlayShootSound();
     }
 

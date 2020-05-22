@@ -9,6 +9,8 @@ public class ShootEnemy : MonoBehaviour
     public int Health;
     private Transform player;
     private Vector3 target;
+    private float timeAlive;
+    [SerializeField] private float maxTimeAlive;
 
     private void Start()
     {
@@ -18,13 +20,21 @@ public class ShootEnemy : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if(transform.position.x == target.x && transform.position.z == target.z)
-        {
+        timeAlive += Time.deltaTime;
+        if (timeAlive > maxTimeAlive)
             DestroyObject();
-            player.GetComponent<LevelHealth>().levelHealth -= Health;
-        }
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    print(collision.gameObject.name);
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        DestroyObject();
+    //        player.GetComponent<LevelHealth>().levelHealth -= Health;
+    //    }
+    //}
 
     // Удаляем объект пули
     public void DestroyObject()

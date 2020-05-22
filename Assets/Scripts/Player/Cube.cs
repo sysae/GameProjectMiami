@@ -29,7 +29,7 @@ public class Cube : MonoBehaviour
     public AudioClip DropWeaponSound;
     [SerializeField] Transform hands;
     [SerializeField] Camera mainCamera;
-
+    [SerializeField] LevelHealth health;
     
 
     void CubeController()
@@ -161,6 +161,15 @@ public class Cube : MonoBehaviour
                 teleport.Teleport(transform);
                 //OnTeleport(teleport);
             }
+        }
+
+        
+        var bullet = go.GetComponent<ShootEnemy>();
+        if(bullet != null)
+        {
+            var bulletDamage = 30;
+            health.levelHealth -= bulletDamage;
+            bullet.DestroyObject();
         }
     }
 

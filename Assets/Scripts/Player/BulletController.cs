@@ -26,7 +26,9 @@ public class BulletController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            var enemy = collision.gameObject.GetComponent<EnemyColor>();
+            enemy.Die();
             Destroy(gameObject);
         }
         

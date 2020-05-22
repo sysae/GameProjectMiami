@@ -20,7 +20,15 @@ public class ShootEnemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if(transform.position.x == target.x && transform.position.z == target.z)
+        if (transform.position.x == target.x && transform.position.z == target.z)
+        {
+            DestroyObject();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
         {
             DestroyObject();
             player.GetComponent<LevelHealth>().levelHealth -= Health;

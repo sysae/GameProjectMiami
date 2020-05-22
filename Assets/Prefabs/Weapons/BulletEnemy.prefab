@@ -108,4 +108,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 70
   Health: 30
-  maxTimeAlive: 12.46
+  maxTimeAlive: 1.3

@@ -7,11 +7,13 @@ public class LevelHealth : MonoBehaviour
 {
     private bool flag = (true);
     public int levelHealth = 100;
-    //[Header("Индикатор здоровья")] public Text text;
+    [Header("Индикатор здоровья")] public Text text;
 
     private void FixedUpdate()
     {
-        
+        var h = Mathf.Max(levelHealth, 0);
+        text.GetComponent<Text>().text = string.Format("<color=white>Health: </color><color=lime>{0}</color>", h);
+    
         if (flag)
         {
             
@@ -22,7 +24,7 @@ public class LevelHealth : MonoBehaviour
             }
             if(levelHealth <= 0)
             {
-                // text.GetComponent<Text>().text = "Вы умерли";
+              
                 Destroy(gameObject);
 
                 flag = false;

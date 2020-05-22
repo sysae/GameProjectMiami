@@ -19,7 +19,6 @@ public class ShootEnemy : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
         if(transform.position.x == target.x && transform.position.z == target.z)
         {
             DestroyObject();

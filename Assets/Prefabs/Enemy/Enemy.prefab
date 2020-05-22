@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 1995912662184191819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.243135, y: 3.5, z: -25.9}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 1995912661998460745}
   m_Father: {fileID: 0}
@@ -122,10 +122,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995912662184191819}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 4}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &1995912662184191808
 AudioSource:
@@ -243,6 +243,8 @@ MonoBehaviour:
   prefabBullet: {fileID: 1108434352064447852, guid: b99bf00685005d64fbea883b5809f319,
     type: 3}
   startTimeBtwShots: 0
+  shootDelay: 1
+  fromLastShoot: 0
   _playerTarget: {fileID: 0}
 --- !u!195 &1995912662184191822
 NavMeshAgent:

@@ -7,10 +7,8 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     
-     public GameObject[] _enemyPrefab;
-     public GameObject[] _pointTarget;
-
-    [SerializeField] private Cube player;
+     public GameObject enemyPrefab;
+     public GameObject[] pointTarget;
 
     void Start()
     {
@@ -19,11 +17,9 @@ public class SpawnEnemy : MonoBehaviour
 
     public void SpawnRandomEnemy()
     {
-        
-        for(int i = 0; i <_pointTarget.Length -1; i++)
+        foreach(var target in pointTarget)
         {
-            var go = Instantiate(_enemyPrefab[i], _pointTarget[i].transform.position, Quaternion.identity);
+            var go = Instantiate(enemyPrefab, target.transform.position, Quaternion.identity);
         }
-        
     }
 }

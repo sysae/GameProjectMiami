@@ -19,24 +19,32 @@ public class AIEnemy : MonoBehaviour {
 	private float timeBtwShots;
 	public float startTimeBtwShots;
 
-	[SerializeField] private Transform _playerTarget;
+	public float shootDelay;
+	public float fromLastShoot;
+
+
+	[SerializeField] private Cube _playerTarget;
 
 	void Start () {
 		myAgent = GetComponent<NavMeshAgent>();
 		_myRender = GetComponent<Renderer>();
 
+		_playerTarget = FindObjectOfType<Cube>();
 		timeBtwShots = startTimeBtwShots;
 	}
 	
-	void FixedUpdate () {
-		UpdateAi();
-		
+	void FixedUpdate () 
+	{
+		if(_playerTarget != null)
+			UpdateAi();	
 	}
 
 	private void UpdateAi()
 	{
-		myAgent.destination = _playerTarget.position;
-		playerTargetDistance = Vector3.Distance(_playerTarget.position, transform.position);
+		fromLastShoot += Time.deltaTime;
+		var playerPos = _playerTarget.transform.position;
+		myAgent.destination = playerPos;
+		playerTargetDistance = Vector3.Distance(playerPos, transform.position);
 		if (playerTargetDistance > 40f)
 		{
 			myAgent.Stop();
@@ -73,14 +81,15 @@ public class AIEnemy : MonoBehaviour {
 	
 	private void AttackBot()
 	{
-		if (timeBtwShots <= 0)
+		if(fromLastShoot >= shootDelay)
 		{
-			Instantiate(prefabBullet, transform.position, Quaternion.identity);
-			timeBtwShots = startTimeBtwShots;
+			Shoot();
+			fromLastShoot = 0;
 		}
-		else
-		{
-			timeBtwShots -= Time.deltaTime;
-		}
+	}
+
+	private void Shoot()
+	{
+		Instantiate(prefabBullet, transform.position, Quaternion.identity);
 	}
 }

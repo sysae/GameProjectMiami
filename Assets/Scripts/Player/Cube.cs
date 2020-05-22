@@ -10,7 +10,7 @@ public class Cube : MonoBehaviour
     Vector3 direction;
     CharacterController controller;
 
-    private float speed = 20f;
+    private float speed = 40f;
     private float gravity = 20f;
 
     [SerializeField]private Equipment equipment;
@@ -22,6 +22,9 @@ public class Cube : MonoBehaviour
     [SerializeField] private AudioSource AudioSource;
     private AudioSource StartMusic;
 
+    [SerializeField] private float coeff;
+
+    
     public AudioClip PickUpWeaponSound;
     public AudioClip DropWeaponSound;
     [SerializeField] Transform hands;
@@ -42,12 +45,12 @@ public class Cube : MonoBehaviour
         direction.y -= gravity * Time.deltaTime;
         controller.Move(direction * Time.deltaTime);
 
-        UpdateCameraPosition();
         //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y + 166f, transform.position.z);
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane groungPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
 
+        UpdateCameraPosition();
         if (groungPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
@@ -58,7 +61,8 @@ public class Cube : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        var offset = new Vector3(0, 166f, 0);
+
+        var offset = new Vector3(0, 200, 0);
         var pos = transform.position + offset;
         mainCamera.transform.position = pos;
     }

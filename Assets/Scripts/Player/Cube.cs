@@ -25,6 +25,9 @@ public class Cube : MonoBehaviour
     public AudioClip PickUpWeaponSound;
     public AudioClip DropWeaponSound;
     [SerializeField] Transform hands;
+    [SerializeField] Camera mainCamera;
+
+    
 
     void CubeController()
     {
@@ -38,7 +41,9 @@ public class Cube : MonoBehaviour
         }
         direction.y -= gravity * Time.deltaTime;
         controller.Move(direction * Time.deltaTime);
-        Camera.main.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
+
+        UpdateCameraPosition();
+        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y + 166f, transform.position.z);
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane groungPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -51,6 +56,12 @@ public class Cube : MonoBehaviour
         }
     }
 
+    private void UpdateCameraPosition()
+    {
+        var offset = new Vector3(0, 166f, 0);
+        var pos = transform.position + offset;
+        mainCamera.transform.position = pos;
+    }
 
     private void DropWeapon()
     {
@@ -135,7 +146,24 @@ public class Cube : MonoBehaviour
                 EquipWeapon(weapon);
             }
         }
+
+        var go = collision.gameObject;
+        if (go.tag == "Teleport")
+        {
+
+            var teleport = go.GetComponent<NextScene>();
+            if(teleport != null)
+            {
+                teleport.Teleport(transform);
+                //OnTeleport(teleport);
+            }
+        }
     }
+
+   /* private void OnTeleport(NextScene nextLevel)
+    {
+
+    }*/
 
     void EquipWeapon(Weapon weapon)
     {
@@ -147,4 +175,16 @@ public class Cube : MonoBehaviour
     }
 
     private bool IsReadyToEquip => Input.GetKey(KeyCode.E);
+
+    //public void SpawnPlayerInPoint(Vector3 position)
+    //{
+    //    var ch = GetComponent<CharacterController>();
+    //    ch.enabled = false;
+    //    transform.position = position;
+    //    ch.enabled = true;
+    //    //ch.SimpleMove();
+    //}
+
+    
+
 }

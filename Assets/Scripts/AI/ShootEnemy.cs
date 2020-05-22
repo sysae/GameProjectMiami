@@ -23,17 +23,10 @@ public class ShootEnemy : MonoBehaviour
         if(transform.position.x == target.x && transform.position.z == target.z)
         {
             DestroyObject();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            DestroyObject();
             player.GetComponent<LevelHealth>().levelHealth -= Health;
         }
     }
+
     // Удаляем объект пули
     public void DestroyObject()
     {

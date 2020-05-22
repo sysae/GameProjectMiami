@@ -240,7 +240,9 @@ MonoBehaviour:
   attackDistance: 40
   enemyMovementSpeed: 25
   damping: 10
-  Health: 100
+  prefabBullet: {fileID: 1108434352064447852, guid: b99bf00685005d64fbea883b5809f319,
+    type: 3}
+  startTimeBtwShots: 0
   _playerTarget: {fileID: 0}
 --- !u!195 &1995912662184191822
 NavMeshAgent:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelHealth : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class LevelHealth : MonoBehaviour
             {
               
                 Destroy(gameObject);
+                SceneManager.LoadScene("SampleScene");
 
                 flag = false;
             }

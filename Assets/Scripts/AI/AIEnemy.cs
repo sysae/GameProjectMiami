@@ -29,7 +29,12 @@ public class AIEnemy : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
+		UpdateAi();
+		
+	}
 
+	private void UpdateAi()
+	{
 		myAgent.destination = _playerTarget.position;
 		playerTargetDistance = Vector3.Distance(_playerTarget.position, transform.position);
 		if (playerTargetDistance > 40f)
@@ -40,7 +45,7 @@ public class AIEnemy : MonoBehaviour {
 		{
 			if (playerTargetDistance < 20f)
 			{
-				
+
 				myAgent.Stop();
 			}
 			else

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Cube : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class Cube : MonoBehaviour
     [SerializeField]private Equipment equipment;
     private Weapon currentWeapon;
     public float fromLastShot;
+
+    public Text objective;
+    public GameObject Finish;
 
     public GameObject BulletPrefab;
 
@@ -62,7 +67,7 @@ public class Cube : MonoBehaviour
     private void UpdateCameraPosition()
     {
 
-        var offset = new Vector3(0, 200, 0);
+        var offset = new Vector3(0, 130, 0);
         var pos = transform.position + offset;
         mainCamera.transform.position = pos;
     }
@@ -82,7 +87,8 @@ public class Cube : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        
         StartMusic = GetComponent<AudioSource>();
         StartMusic.Play();
         controller = GetComponent<CharacterController>();
@@ -103,6 +109,21 @@ public class Cube : MonoBehaviour
 
     private void Update()
     {
+        //в старте это работает криво, пришлось эту хрень сюда запихать
+
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Enemy");
+        int Enemys = list.Length;
+
+        if (Enemys!=0)
+        {
+          
+            objective.text = string.Format("<color=black>Current objective:</color> kill<color=lime> {0} </color><color=red>red guys</color>", Enemys);
+        }
+        else
+        {
+            Finish.SetActive(true);
+            objective.text = string.Format("<color=black>Current objective:</color><color=lime> go away</color>");
+        }
         if (HasWeapon)
         {
             //clickedLastUpdate
@@ -171,14 +192,21 @@ public class Cube : MonoBehaviour
             health.levelHealth -= bulletDamage;
             bullet.DestroyObject();
         }
+
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("Сaptions");
+        }
+
     }
 
-   /* private void OnTeleport(NextScene nextLevel)
-    {
+   
+/* private void OnTeleport(NextScene nextLevel)
+ {
 
-    }*/
+ }*/
 
-    void EquipWeapon(Weapon weapon)
+void EquipWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
         equipment.SetIsArmed(true);

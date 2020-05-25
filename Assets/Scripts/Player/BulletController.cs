@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class BulletController : MonoBehaviour
             var enemy = collision.gameObject.GetComponent<EnemyColor>();
             enemy.Die();
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
         
 

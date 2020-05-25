@@ -15,6 +15,12 @@ public class LoadScenes : MonoBehaviour
         Application.Quit();
     }
 
+    void Start()
+    {
+        Cursor.visible = true;
+    }
+
+
     public void MainMenu()
     {
         SceneManager.LoadScene("Сaptions");
